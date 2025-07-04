@@ -1,0 +1,198 @@
+/* Basic Resets & Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0'); /* For icons if used */
+
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FFC0CB 0%, #FF69B4 100%); /* Soft pink gradient */
+    color: #333;
+    overflow: hidden; /* Prevent scrollbar for moving button */
+    position: relative; /* For absolutely positioned elements to work within */
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+    padding: 40px;
+    border-radius: 25px; /* More rounded corners */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25); /* Stronger soft shadow */
+    text-align: center;
+    max-width: 550px; /* Slightly wider */
+    width: 90%;
+    transform: scale(1); /* Initial scale */
+    animation: fadeInScale 0.8s ease-out; /* Animation on load */
+    position: relative; /* Crucial for absolute positioning of the moving button */
+    z-index: 1; /* Ensure container is above other elements if needed */
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.image-wrapper {
+    margin-bottom: 30px;
+}
+
+.image-wrapper img {
+    max-width: 90%; /* Make images more prominent */
+    height: auto;
+    border-radius: 20px; /* Rounded image corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Nicer shadow */
+    transition: transform 0.3s ease-in-out; /* Smooth hover for images */
+}
+
+.image-wrapper img:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+}
+
+.main-heading, .follow-up-heading, .success-heading {
+    font-family: 'Pacifico', cursive; /* Romantic font for headings */
+    color: #E91E63; /* Darker pink for headings */
+    font-size: 3em; /* Larger headings */
+    margin-bottom: 15px;
+    line-height: 1.2;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Subtle text shadow */
+}
+
+.proposal-question {
+    font-family: 'Pacifico', cursive;
+    color: #C2185B; /* Even darker pink */
+    font-size: 2.2em;
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+.sub-text {
+    font-size: 1.15em; /* Slightly larger text */
+    color: #555;
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* More space between buttons */
+    margin-top: 40px;
+    position: relative; /* To contain absolutely positioned 'No' button */
+    z-index: 2; /* Ensure buttons are above main text flow if button moves */
+}
+
+.btn {
+    display: inline-flex; /* Use flexbox for button content (like icon) */
+    align-items: center;
+    padding: 16px 35px; /* Larger padding */
+    border-radius: 35px; /* More pill-shaped */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em; /* Larger font size */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Stronger hover shadow */
+    white-space: nowrap;
+    border: none; /* Remove default border */
+    cursor: pointer; /* Indicate clickable */
+}
+
+.btn-yes {
+    background-color: #4CAF50; /* Green for Yes */
+    color: white;
+}
+
+.btn-yes:hover {
+    background-color: #43A047; /* Darker green */
+    transform: translateY(-5px) scale(1.03); /* Lift and slight scale */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+.btn-no {
+    background-color: #F44336; /* Red for No */
+    color: white;
+    /* transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);  Only for non-moving state */
+}
+
+.btn-no:hover {
+    background-color: #E53935; /* Darker red */
+    transform: translateY(-5px) scale(1.03); /* Lift and slight scale */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Specific styles for the "No" button that moves */
+.btn-no.moving {
+    position: absolute; /* Essential for movement */
+    /* top, left will be set by JS */
+    /* Remove transition when moving for instant jump, or set a very fast one for wobble */
+    transition: none !important; /* Overrides other transitions when moving */
+    /* If you want a slight wobble instead of jump: */
+    /* transition: transform 0.1s ease-out; */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        padding: 30px 20px;
+    }
+    .main-heading, .follow-up-heading, .success-heading {
+        font-size: 2.2em;
+    }
+    .proposal-question {
+        font-size: 1.8em;
+    }
+    .sub-text {
+        font-size: 1em;
+    }
+    .btn-group {
+        flex-direction: column; /* Stack buttons on small screens */
+        gap: 15px;
+    }
+    .btn {
+        padding: 14px 25px;
+        font-size: 1.1em;
+    }
+    .image-wrapper img {
+        max-width: 100%;
+    }
+}
+
+/* Additional styling for Material Symbols (if you add icons) */
+.btn .material-symbols-outlined {
+    margin-left: 8px;
+    font-size: 1.2em;
+}
+.mute-button {
+    position: fixed; /* Screen par fixed rahega */
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.7); /* Thoda transparent */
+    border: none;
+    border-radius: 50%; /* Gol button */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 1000; /* Sabse upar rahega */
+}
+
+.mute-button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: scale(1.05);
+}
+
+.mute-button .material-symbols-outlined {
+    font-size: 28px;
+    color: #E91E63; /* Pink color for icon */
+}
