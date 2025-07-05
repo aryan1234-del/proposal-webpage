@@ -45,8 +45,8 @@ body {
 }
 
 .image-wrapper img {
-    max-width: 90%; /* Make images more prominent */
-    height: auto;
+    max-width: 30%; /* Make images more prominent */
+    height: 30;
     border-radius: 20px; /* Rounded image corners */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Nicer shadow */
     transition: transform 0.3s ease-in-out; /* Smooth hover for images */
